@@ -20,7 +20,7 @@ if ($payload->ref === 'refs/heads/master') {
  
     $project_directory = '/var/www/dev/GitPuller/';
  
-    $output = shell_exec("/var/www/dev/GitPuller/git-puller.sh");
+    $output = shell_exec("/var/www/dev/git-puller.sh");
  
     //log the request
     file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $output, FILE_APPEND);
