@@ -19,14 +19,17 @@ catch(Exception $e) {
 if ($payload->ref === 'refs/heads/master') {
  
     $project_directory = '/var/www/dev/GitPuller/';
- 
-    $output = shell_exec("/var/www/dev/git-puller.sh");
- 
-    //log the request
+	
+	
+	function start_sh(){
+	  $output = shell_exec("/var/www/dev/git-puller.sh");
+	}
+
+	function server_log(){
     file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $output, FILE_APPEND);
- 
-	// Functie voor het versturen van de mail log
-	function mail_send(){
+	}
+	
+	function mail_log(){
 	$to      = 'r.dolewa@gmail.com';
 	$subject = 'Gitpuller Script';
 	$message = $output;
@@ -36,7 +39,10 @@ if ($payload->ref === 'refs/heads/master') {
 
 	mail($to, $subject, $message, $headers);
 	}
-	mail_send();
+	
+	start_sh();
+	mail_log();
+	server_log();
 	
 }
 
