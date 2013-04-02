@@ -17,11 +17,14 @@ catch(Exception $e) {
 }
  
 if ($payload->ref === 'refs/heads/master') {
- 
-    $project_directory = '/var/www/dev/GitPuller/';
+ 	
+	$shelldata = start_sh();
+	mail_log($shelldata);
+	server_log($shelldata);
 	
-	
-	function start_sh(){
+}
+
+function start_sh(){
 	  $output = shell_exec("/var/www/dev/git-puller.sh");
 	  return $output;
 	}
@@ -41,11 +44,4 @@ if ($payload->ref === 'refs/heads/master') {
 	mail($to, $subject, $message, $headers);
 	}
 	
-	$shelldata = start_sh();
-	mail_log($shelldata);
-	server_log($shelldata);
-	
-	
-}
-
 ?>
