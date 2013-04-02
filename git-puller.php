@@ -23,13 +23,14 @@ if ($payload->ref === 'refs/heads/master') {
 	
 	function start_sh(){
 	  $output = shell_exec("/var/www/dev/git-puller.sh");
+	  return $output;
 	}
 
-	function server_log(){
+	function server_log($output){
     file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $output, FILE_APPEND);
 	}
 	
-	function mail_log(){
+	function mail_log($output){
 	$to      = 'r.dolewa@gmail.com';
 	$subject = 'Gitpuller Script';
 	$message = $output;
@@ -40,9 +41,9 @@ if ($payload->ref === 'refs/heads/master') {
 	mail($to, $subject, $message, $headers);
 	}
 	
-	start_sh();
-	mail_log();
-	server_log();
+	$shelldata = start_sh();
+	mail_log($shelldata);
+	server_log($shelldata);
 	
 }
 
