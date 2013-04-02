@@ -36,7 +36,6 @@ if ($payload->ref === 'refs/heads/master') {
 
 	mail($to, $subject, $message, $headers);
 	}
-	
 	mail_send();
 	
 }
