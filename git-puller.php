@@ -25,15 +25,20 @@ if ($payload->ref === 'refs/heads/master') {
     //log the request
     file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $output, FILE_APPEND);
  
+	// Functie voor het versturen van de mail log
+	function mail_send(){
 	$to      = 'r.dolewa@gmail.com';
-	$subject = 'Gitpuller';
+	$subject = 'Gitpuller Script';
 	$message = $output;
-	$headers = 'From: webmaster@example.com' . "\r\n" .
-		'Reply-To: webmaster@example.com' . "\r\n" .
+	$headers = 'From: Gitpuller@Lemonbyte.nl' . "\r\n" .
+		'Reply-To: Gitpuller@Lemonbyte.nl' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers);
- 
+	mail($to, $subject, $message, $headers);
+	}
+	
+	mail_send();
+	
 }
 
 ?>
