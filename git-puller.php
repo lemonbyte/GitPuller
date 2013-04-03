@@ -23,7 +23,6 @@
 		$shelldata = start_sh();
 		mail_log($shelldata,$payload);
 		server_log($shelldata);
-	
 	}
 
 ?>
