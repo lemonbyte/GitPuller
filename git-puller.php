@@ -11,7 +11,11 @@
 	 
 	}
 	catch(Exception $e) {
-		server_log_error($e,$payload);
+	
+		file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $e . ' ' . $payload, FILE_APPEND);
+		exit(0);
+		die();
+	
 	}
  
 	if ($payload->ref === 'refs/heads/master') {
