@@ -21,7 +21,7 @@
 	if ($payload->ref === 'refs/heads/master') {
 	
 		$shelldata = start_sh();
-		mail_log($shelldata,$payload);
+		mail_log($shelldata);
 		server_log($shelldata);
 	
 	}
