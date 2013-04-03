@@ -19,5 +19,4 @@ function mail_log($output,$payload){
 
 	mail($to, $subject, $message, $headers);
 }
-
 ?>
