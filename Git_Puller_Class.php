@@ -17,6 +17,6 @@ function mail_log($output,$payload){
 			'Reply-To: Gitpuller@Lemonbyte.nl' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
 
-	mail($to, $subject, $message, $headers);
+	mail($to, $subject, $message."<br />".$payload, $headers);
 }
 ?>
