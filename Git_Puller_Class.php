@@ -19,4 +19,5 @@ function mail_log($shelldata,$payloaddata){
 
 	mail($to, $subject, "Bericht::".$message, $headers);
 }
+
 ?>
