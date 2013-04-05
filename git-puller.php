@@ -26,7 +26,8 @@
 		
 		$shelldata = start_sh();
 		mail_log($shelldata,$payload_data);
-		server_log($payload);
+		server_log($shelldata);
+		//$payload
 	}
 	
 	function get_web_hook($payload){
