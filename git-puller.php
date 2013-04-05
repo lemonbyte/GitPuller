@@ -17,13 +17,17 @@
 		die();
 	
 	}
- 
+ 	
 	if ($payload->ref === 'refs/heads/master') {
 	
+		$payloaddata = 'test';
 		$shelldata = start_sh();
-		mail_log($shelldata,$payload);
+		mail_log($shelldata,$payloaddata);
 		server_log($shelldata);
 	}
-
+	
+	function get_web_hook(){
+		
+	}
 	
 ?>
