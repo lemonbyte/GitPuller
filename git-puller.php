@@ -12,7 +12,7 @@
 	}
 	catch(Exception $e) {
 	
-		//file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $e . ' ' . $payload, FILE_APPEND);
+		file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $e . ' ' . $payload, FILE_APPEND);
 		exit(0);
 		die();
 	
