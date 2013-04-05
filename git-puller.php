@@ -12,7 +12,7 @@
 	}
 	catch(Exception $e) {
 	
-		file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $e . ' ' . $payload, FILE_APPEND);
+		//file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $e . ' ' . $payload, FILE_APPEND);
 		exit(0);
 		die();
 	
@@ -26,12 +26,7 @@
 		
 		$shelldata = start_sh();
 		mail_log($shelldata,$payload_data);
-		server_log($payload);
+		server_log(json_decode($_REQUEST['payload']));
 		//$payload;
 	}
-	
-	function get_web_hook($payload){
-		$git_name = $payload->name;
-	}
-
 ?>
