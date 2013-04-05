@@ -19,5 +19,4 @@ function mail_log($shelldata,$payloaddata){
 
 	mail($to, $subject, "Console: <br />".$message."<br />", $headers);
 }
-
 ?>
