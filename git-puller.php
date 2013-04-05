@@ -28,7 +28,7 @@
 		$shelldata = start_sh();
 		mail_log($shelldata,$payload_data);
 		server_log($shelldata);
-		file_put_contents('/var/www/dev/GitPuller/logs/payload.txt', $payload, FILE_APPEND);
+		file_put_contents('/var/www/dev/GitPuller/logs/payload.txt', $_REQUEST['payload'], FILE_APPEND);
 		//$payload;
 	}
 		
