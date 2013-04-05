@@ -20,7 +20,7 @@
  	
 	if ($payload->ref === 'refs/heads/master') {
 		
-		$payload_data = $payload->message;
+		$payload_data = $payload->ref;
 		//"<br>".$payload->modified.$payload->removed.$payload->timestamp.$payload->committer;
 		
 		$shelldata = start_sh();
