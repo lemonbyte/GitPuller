@@ -30,5 +30,4 @@
 		$git_name = $payload->name;
 	}
 	
-	
 ?>
