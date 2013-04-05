@@ -23,11 +23,11 @@
 		//$payload_data = $payload->name;
 		//"<br>".$payload->modified.$payload->removed.$payload->timestamp.$payload->committer;
 		
-		$payload = json_decode($_REQUEST['payload']);
+		//$payload = json_decode($_REQUEST['payload']);
 		
 		$shelldata = start_sh();
 		mail_log($shelldata,$payload_data);
-		server_log($payload);
+		server_log($shelldata);
 		//$payload;
 	}
 ?>
