@@ -20,7 +20,7 @@
  	
 	if ($payload->ref === 'refs/heads/master') {
 		
-		$payload_data = $payload->timestamp;
+		$payload_data = $payload->name;
 		//"<br>".$payload->modified.$payload->removed.$payload->timestamp.$payload->committer;
 		
 		
@@ -28,7 +28,6 @@
 		mail_log($shelldata,$payload_data);
 		server_log($shelldata);
 	}
-	
 	
 	function get_web_hook($payload){
 		$git_name = $payload->name;
