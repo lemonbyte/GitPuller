@@ -20,7 +20,7 @@
  	
 	if ($payload->ref === 'refs/heads/master') {
 		
-		$payload_data = $payload->name;
+		$payload_data = 'test';
 		$shelldata = start_sh();
 		mail_log($shelldata,$payload_data);
 		server_log($shelldata);
