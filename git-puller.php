@@ -20,7 +20,7 @@
  	
 	if ($payload->ref === 'refs/heads/master') {
 		
-		$payload_data = var_dump($payload->owner['email']);
+		$payload_data = $payload->owner['email'];
 		//"<br>".$payload->modified.$payload->removed.$payload->timestamp.$payload->committer;
 		
 		$payload = json_decode($_REQUEST['payload']);
