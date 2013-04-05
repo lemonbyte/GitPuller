@@ -20,7 +20,7 @@
  	
 	if ($payload->ref === 'refs/heads/master') {
 		
-		$payload_data = $payload->ref;
+		$payload_data = $payload->timestamp;
 		//"<br>".$payload->modified.$payload->removed.$payload->timestamp.$payload->committer;
 		
 		
