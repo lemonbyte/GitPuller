@@ -18,16 +18,16 @@
 	
 	}
  	
-	
 	if ($payload->ref === 'refs/heads/master') {
 		
-		$payload_data = $payload->name;
+		//$payload_data = $payload->name;
 		//"<br>".$payload->modified.$payload->removed.$payload->timestamp.$payload->committer;
 		
+		$payload = json_decode($_REQUEST['payload']);
 		
 		$shelldata = start_sh();
 		mail_log($shelldata,$payload_data);
-		server_log(json_decode($_REQUEST['payload']));
+		server_log($payload);
 		//$payload;
 	}
 ?>
