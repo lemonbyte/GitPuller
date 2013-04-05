@@ -19,15 +19,15 @@
 	}
  	
 	if ($payload->ref === 'refs/heads/master') {
-	
-		$payloaddata = extract($payload);
+		
+		$payload_data = get_web_hook($payload);
 		$shelldata = start_sh();
 		mail_log($shelldata,$payloaddata);
 		server_log($shelldata);
 	}
 	
-	function get_web_hook(){
-		
+	function get_web_hook($payload){
+		$git_name = $payload->name;
 	}
 	
 	
