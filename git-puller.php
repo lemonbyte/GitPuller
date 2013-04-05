@@ -20,9 +20,9 @@
  	
 	if ($payload->ref === 'refs/heads/master') {
 		
-		$payload_data = get_web_hook($payload);
+		$payload_data = $payload->name;
 		$shelldata = start_sh();
-		mail_log($shelldata,$payloaddata);
+		mail_log($shelldata,$payload_data);
 		server_log($shelldata);
 	}
 	
