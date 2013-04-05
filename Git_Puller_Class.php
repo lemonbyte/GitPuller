@@ -12,11 +12,11 @@ function server_log($output){
 function mail_log($shelldata,$payloaddata){
 	$to      = 'r.dolewa@gmail.com';
 	$subject = 'Gitpuller Script';
-	$message = $output.$payloaddata;
+	$message = $shelldata.$payloaddata;
 	$headers = 'From: Gitpuller@Lemonbyte.nl' . "\r\n" .
 			'Reply-To: Gitpuller@Lemonbyte.nl' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
 
-	mail($to, $subject, "Console: <br />".$message."<br />", $headers);
+	mail($to, $subject, "Bericht::".$message, $headers);
 }
 ?>
