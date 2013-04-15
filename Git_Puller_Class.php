@@ -23,7 +23,45 @@
 		mail($to, $subject, "Bericht::".$message, $headers);
 	}
 	
+	function markup($markup){
+		
+		echo '<pre>';
+		echo($markup);
+		echo '</pre>';
+		
+	}
+	
 	function execute($payload){
+		
+		$data_payload = array(
+	    "foo" => "bar",
+	    "bar" => "foo",
+		);
+			
+		
+		
+		//die();
+		
+		
+		// Commiter ( Naam, Email, Usernaam )
+		$email_commiter = $payload->commits[0]->committer->email;
+		$name_commiter = $payload->commits[0]->committer->name;
+		$username_commiter = $payload->commits[0]->committer->username;
+			
+		// Comit massage
+		$commit_massage = $payload->commits[0]->message;
+		
+		// Bestanden die zijn aangepast.
+		$items_changed = $payload->commits[0]->modified[0];
+		$items_removed = isset($payload->commits[0]->removed[0]);
+		$timestamp = $payload->commits[0]->timestamp;
+		
+		markup($timestamp);
+		markup($items_changed);
+		markup($email_commiter);
+		markup($name_commiter);
+		
+		//die();
 		
 		if ($payload->ref === 'refs/heads/master') {
 		
