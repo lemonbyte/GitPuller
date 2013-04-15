@@ -11,8 +11,7 @@
 	
 	// Server ip checken / als in local modus dan local host, anders naar live omgeiveing maken.s
 	$ip = $_SERVER["SERVER_ADDR"];
-
-	
+	s
 	// Check voor het controleren van de payload.
 	try {
 		//$payload = json_decode($_REQUEST['payload']);
