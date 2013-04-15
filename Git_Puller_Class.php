@@ -42,7 +42,7 @@
 		
 		//die();
 		
-		
+	
 		// Commiter ( Naam, Email, Usernaam )
 		$email_commiter = $payload->commits[0]->committer->email;
 		$name_commiter = $payload->commits[0]->committer->name;
