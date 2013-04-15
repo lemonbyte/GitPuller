@@ -28,8 +28,6 @@
 		die();
 	
 	}
- 	
-	
 	
 	execute($payload);
 
