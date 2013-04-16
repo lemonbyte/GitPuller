@@ -1,3 +1,6 @@
+
+
+
 <?php #!/usr/bin/env /usr/bin/php
 
 	// Config instellingen
@@ -7,7 +10,6 @@
 	
 	// Includen van de Classe
 	include("Git_Puller_Class.php");
-	
 	
 	// Server ip checken / als in local modus dan local host, anders naar live omgeiveing maken.s
 	$ip = $_SERVER["SERVER_ADDR"];

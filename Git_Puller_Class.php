@@ -47,12 +47,27 @@
 		//echo markup($Email);
 
 		$datastring = markup($Email).markup($Name).markup($Username).markup($Message).markup($Modified).markup($Removed).markup($Timestamp);
+		$Removed_temp = $Removed ? $Removed : "Nothing removed";
+		$Modified_temp = $Modified ? $Modified : "Nothing modified";
+
+$email = <<<EOT
+<h2>GitPuller</h2>
+<h4>Updated @ $Timestamp</h4>
+
+<p>Name: $Name</p>
+<p>Email: $Email</p>
+<p>Commiter: $Username </p>
+<p><strong>Message: </strong>$Message </p>
+<p>Modified: $Modified_temp </p>
+<p>Removed: $Removed_temp </p>
 		
-	
+EOT;
+
+				
 		if ($payload->ref === 'refs/heads/master') {
 			
-			$payload_data = $datastring;
-			//echo $payload_data;
+			$payload_data = $email;
+			//echo $email;
 			//die();
 			
 			$shelldata = start_sh();
