@@ -49,8 +49,6 @@
 		$datastring = markup($Email).markup($Name).markup($Username).markup($Message).markup($Modified).markup($Removed).markup($Timestamp);
 		
 	
-		
-		
 		if ($payload->ref === 'refs/heads/master') {
 			
 			$payload_data = $datastring;
