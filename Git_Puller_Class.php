@@ -62,7 +62,6 @@ $email = <<<EOT
 <p>Removed: $Removed_temp </p>
 		
 EOT;
-
 				
 		if ($payload->ref === 'refs/heads/master') {
 			
