@@ -29,7 +29,6 @@
 		die();
 	
 	}
-	
 	execute($payload);
 
 ?>
