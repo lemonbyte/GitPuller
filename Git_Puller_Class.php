@@ -56,14 +56,18 @@
 		$items_removed = isset($payload->commits[0]->removed[0]);
 		$timestamp = $payload->commits[0]->timestamp;
 		
-		$test = markup($timestamp).markup($items_changed).markup($email_commiter).markup($name_commiter);
+		//$test = markup($timestamp).markup($items_changed).markup($email_commiter).markup($name_commiter);
 		
 		
 		
 		if ($payload->ref === 'refs/heads/master') {
 		
-			$payload_data = $test;
-		
+			
+			$payload_data = $timestamp;
+			
+			//echo $payload_data;
+			//die();
+			
 			$shelldata = start_sh();
 			mail_log($shelldata,$payload_data);
 			server_log($shelldata);
