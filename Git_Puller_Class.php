@@ -67,7 +67,7 @@ EOT;
 				
 		if ($payload->ref === 'refs/heads/master') {
 			
-			$payload_data = $email;
+			$payload_data = $homepage;
 			//echo $email;
 			//die();
 			
