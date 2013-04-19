@@ -1,7 +1,8 @@
 <?php 
 
 	$homepage = file_get_contents('Mail_Template.php');
-
+	
+	
 	// Functie voor het uitvoeren van de shell
 	function start_sh(){
 		$output = shell_exec("/var/www/dev/git-puller.sh");
