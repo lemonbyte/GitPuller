@@ -1,6 +1,6 @@
 <?php 
 
-	$homepage = file_get_contents('Mail_Template.php');
+	
 	
 	
 	// Functie voor het uitvoeren van de shell
@@ -68,7 +68,7 @@ $email = <<<EOT
 EOT;
 				
 		if ($payload->ref === 'refs/heads/master') {
-			
+			$homepage = file_get_contents('Mail_Template.php');
 			$payload_data = $homepage;
 			//echo $email;
 			//die();
