@@ -1,5 +1,7 @@
 <?php 
 
+	$homepage = file_get_contents('Mail_Template.php');
+
 	// Functie voor het uitvoeren van de shell
 	function start_sh(){
 		$output = shell_exec("/var/www/dev/git-puller.sh");
@@ -70,6 +72,7 @@ EOT;
 			//die();
 			
 			$shelldata = start_sh();
+			
 			mail_log($shelldata,$payload_data);
 			server_log($shelldata);
 			file_put_contents('/var/www/dev/GitPuller/logs/payload.txt', $payload, FILE_APPEND);
