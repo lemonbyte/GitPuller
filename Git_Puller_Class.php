@@ -70,7 +70,7 @@ EOT;
 				
 		if ($payload->ref === 'refs/heads/master') {
 			$homepage = file_get_contents('Mail_Template.php');
-			$payload_data = $homepage;
+			$payload_data = $email;
 			//echo $email;
 			//die();
 			
