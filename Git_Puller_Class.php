@@ -49,6 +49,7 @@
 		extract($data_payload);
 		
 		//echo markup($Email);
+		
 
 		$datastring = markup($Email).markup($Name).markup($Username).markup($Message).markup($Modified).markup($Removed).markup($Timestamp);
 		$Removed_temp = $Removed ? $Removed : "Nothing removed";
