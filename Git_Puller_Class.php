@@ -63,7 +63,6 @@ EOT;
 			$data_exec = email_data($payload);
 			$email_body = email_data_to_text($data_exec);
 			
-			
 			//echo $email_body;
 			//die();
 			// Data verzameling en uivoeren van de shell
