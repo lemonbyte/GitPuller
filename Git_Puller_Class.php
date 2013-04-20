@@ -65,14 +65,13 @@ EOT;
 	// Uitvoer functie
 	function execute($payload){
 		if ($payload->ref === 'refs/heads/master') {
-			
+
 			$payload_to_data = $this->payload_to_data($payload);
 			$email_body = $this->email_data_to_text($payload_to_data);
 // 			echo $email_body;
 // 			die();
 			// Data verzameling en uivoeren van de shell
 			$shelldata = $this->start_sh();
-			// TEST TO WRITE
 			// Log files
 			$this->server_log($shelldata);
 			$this->server_log_payload($payload);
