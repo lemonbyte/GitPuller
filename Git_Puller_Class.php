@@ -1,5 +1,6 @@
 <?php 
 
+Class Git_Puller_Class{
 	
 	// Functie voor het uitvoeren van de shell
 	function start_sh(){
@@ -11,7 +12,12 @@
 	function server_log($output){
 		file_put_contents('/var/www/dev/GitPuller/logs/github.txt', $output, FILE_APPEND);
 	}
-
+	
+	// Functie van het plaatsen van een log file op de server
+	function server_log_payload($output){
+		file_put_contents('/var/www/dev/GitPuller/logs/payload.txt', $output, FILE_APPEND);
+	}
+	
 	// Mail functie 
 	function mail_log($shelldata,$email_body){
 		$to      = 'r.dolewa@gmail.com';
@@ -21,10 +27,10 @@
 		$headers = "MIME-Version: 1.0\r\n";
     	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
     	$headers  .= "From: $from\r\n";
-		mail($to, $subject, "Bericht::".$message, $headers);
+		mail($to, $subject, $message, $headers);
 	}
 	
-	function email_data($payload){
+	function payload_to_data($payload){
 		$data = array(
 				"Email" 	 => $payload->commits[0]->committer->email,
 				"Name"		 => $payload->commits[0]->committer->name,
@@ -60,22 +66,19 @@ EOT;
 	function execute($payload){
 		if ($payload->ref === 'refs/heads/master') {
 			
-			$data_exec = email_data($payload);
-			$email_body = email_data_to_text($data_exec);
-			
-			//echo $email_body;
-			//die();
+			$payload_to_data = $this->payload_to_data($payload);
+			$email_body = $this->email_data_to_text($payload_to_data);
+// 			echo $email_body;
+// 			die();
 			// Data verzameling en uivoeren van de shell
-			$shelldata = start_sh();
-			$payload_data = "Payloadata";
-			
+			$shelldata = $this->start_sh();
+
 			// Log files
-			server_log($shelldata);
-			mail_log($shelldata,$email_body);
-			file_put_contents('/var/www/dev/GitPuller/logs/payload.txt', $payload, FILE_APPEND);
-		
+			$this->server_log($shelldata);
+			$this->server_log_payload($payload);
+			$this->smail_log($shelldata,$email_body);
 		}
 		
 	}
-
+}
 ?>
