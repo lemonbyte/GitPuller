@@ -1,8 +1,6 @@
 <?php 
 
 	
-	
-	
 	// Functie voor het uitvoeren van de shell
 	function start_sh(){
 		$output = shell_exec("/var/www/dev/git-puller.sh");
@@ -26,39 +24,32 @@
 		mail($to, $subject, "Bericht::".$message, $headers);
 	}
 	
-	function markup($markup){
-		
-		return $markup."<br />";
-		
-	}
-	
-	
-	function execute($payload){
+	function email_data($payload){
 		
 		$data_payload = array(
-	    "Email" 	 => $payload->commits[0]->committer->email,
-	    "Name"		 => $payload->commits[0]->committer->name,
-		"Username"	 => $payload->commits[0]->committer->username,
-		"Message" 	 => $payload->commits[0]->message,
-		"Modified"	 => $payload->commits[0]->modified[0],
-		"Removed"	 => isset($payload->commits[0]->removed[0]),
-		"Timestamp"	 => $payload->commits[0]->timestamp				
+				"Email" 	 => $payload->commits[0]->committer->email,
+				"Name"		 => $payload->commits[0]->committer->name,
+				"Username"	 => $payload->commits[0]->committer->username,
+				"Message" 	 => $payload->commits[0]->message,
+				"Modified"	 => $payload->commits[0]->modified[0],
+				"Removed"	 => isset($payload->commits[0]->removed[0]),
+				"Timestamp"	 => $payload->commits[0]->timestamp
 		);
 			
-		//var_dump($data_payload);
-		extract($data_payload);
-		
-		//echo markup($Email);
-		
 
-		$datastring = markup($Email).markup($Name).markup($Username).markup($Message).markup($Modified).markup($Removed).markup($Timestamp);
+		
+		
+	}
+
+	function email_data_to_text(){
+		extract($data_payload);
 		$Removed_temp = $Removed ? $Removed : "Nothing removed";
 		$Modified_temp = $Modified ? $Modified : "Nothing modified";
-
+		
 $email = <<<EOT
 <h2>GitPuller</h2>
 <h4>Updated @ $Timestamp</h4>
-
+		
 <p>Name: $Name</p>
 <p>Email: $Email</p>
 <p>Commiter: $Username </p>
@@ -67,15 +58,12 @@ $email = <<<EOT
 <p>Removed: $Removed_temp </p>
 		
 EOT;
-				
+	}
+	
+	// Uitvoer functie
+	function execute($payload){
 		if ($payload->ref === 'refs/heads/master') {
-			$homepage = file_get_contents('Mail_Template.php');
-			$payload_data = $email;
-			//echo $email;
-			//die();
-			
 			$shelldata = start_sh();
-			
 			mail_log($shelldata,$payload_data);
 			server_log($shelldata);
 			file_put_contents('/var/www/dev/GitPuller/logs/payload.txt', $payload, FILE_APPEND);
