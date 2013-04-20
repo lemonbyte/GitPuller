@@ -63,7 +63,6 @@ EOT;
 		if ($payload->ref === 'refs/heads/master') {
 			
 			
-			die();
 			
 			// Data verzameling en uivoeren van de shell
 			$shelldata = start_sh();
