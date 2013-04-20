@@ -66,6 +66,7 @@ EOT;
 	function execute($payload){
 		if ($payload->ref === 'refs/heads/master') {
 			
+			
 
 			$payload_to_data = $this->payload_to_data($payload);
 			$email_body = $this->email_data_to_text($payload_to_data);
