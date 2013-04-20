@@ -38,7 +38,6 @@
 			
 
 		
-		
 	}
 
 	function email_data_to_text(){
