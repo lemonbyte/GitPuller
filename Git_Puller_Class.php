@@ -77,7 +77,7 @@ EOT;
 			// Log files
 			$this->server_log($shelldata);
 			$this->server_log_payload($payload);
-			$this->smail_log($shelldata,$email_body);
+			$this->mail_log($shelldata,$email_body);
 		}
 		
 	}
