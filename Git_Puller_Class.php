@@ -72,7 +72,6 @@ EOT;
 // 			die();
 			// Data verzameling en uivoeren van de shell
 			$shelldata = $this->start_sh();
-
 			// TEST TO WRITE
 			// Log files
 			$this->server_log($shelldata);
