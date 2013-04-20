@@ -1,6 +1,3 @@
-
-
-
 <?php #!/usr/bin/env /usr/bin/php
 
 	// Config instellingen

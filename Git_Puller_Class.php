@@ -16,10 +16,11 @@
 	function mail_log($shelldata,$payloaddata){
 		$to      = 'r.dolewa@gmail.com';
 		$subject = 'Gitpuller Script';
+		$from = 'Gitpuller@lemonbyte.nl';
 		$message = $shelldata.$payloaddata;
-		$headers = 'From: Gitpuller@Lemonbyte.nl' . "\r\n" .
-				'Reply-To: Gitpuller@Lemonbyte.nl' . "\r\n" .
-				'X-Mailer: PHP/' . phpversion();
+		$headers = "MIME-Version: 1.0\r\n";
+    	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+    	$headers  .= "From: $from\r\n";
 	
 		mail($to, $subject, "Bericht::".$message, $headers);
 	}
@@ -35,9 +36,7 @@
 				"Removed"	 => isset($payload->commits[0]->removed[0]),
 				"Timestamp"	 => $payload->commits[0]->timestamp
 		);
-			
-
-		
+	
 	}
 
 	function email_data_to_text(){
@@ -62,9 +61,17 @@ EOT;
 	// Uitvoer functie
 	function execute($payload){
 		if ($payload->ref === 'refs/heads/master') {
+			
+			
+			die();
+			
+			// Data verzameling en uivoeren van de shell
 			$shelldata = start_sh();
-			mail_log($shelldata,$payload_data);
+			$payload_data = "Payloadata";
+			
+			// Log files
 			server_log($shelldata);
+			mail_log($shelldata,$payload_data);
 			file_put_contents('/var/www/dev/GitPuller/logs/payload.txt', $payload, FILE_APPEND);
 		
 		}
